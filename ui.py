@@ -14,8 +14,12 @@ class MainUi():
         self.window.setWindowTitle("rel path")
         self.ctr_widget = QWidget()
         self.window.setCentralWidget(self.ctr_widget)
-        self.ctr_layout = QHBoxLayout(self.ctr_widget)
+        self.ctr_layout = QVBoxLayout(self.ctr_widget)
 
+        self.layout_rel = QHBoxLayout()
+        self.layout_target = QHBoxLayout()
+        self.layout_root = QHBoxLayout()
+        
         self.label_target = QLabel("Target path : ")
         self.label_root = QLabel("Root path : ")
         self.label_target.setGeometry(QRect(70, 80, 100, 100))
@@ -30,15 +34,18 @@ class MainUi():
         self.btn_root_path_dialog.clicked.connect(
             lambda: func.get_root_path(self.window, self))
 
-        self.ctr_layout.addWidget(self.label_target)
-        self.ctr_layout.addWidget(self.label_target_path)
-        self.ctr_layout.addWidget(self.btn_target_path_dialog)
-        self.ctr_layout.addWidget(self.label_root)
-        self.ctr_layout.addWidget(self.label_root_path)
-        self.ctr_layout.addWidget(self.btn_root_path_dialog)
+        self.layout_target.addWidget(self.label_target)
+        self.layout_target.addWidget(self.label_target_path)
+        self.layout_target.addWidget(self.btn_target_path_dialog)
+        self.layout_root.addWidget(self.label_root)
+        self.layout_root.addWidget(self.label_root_path)
+        self.layout_root.addWidget(self.btn_root_path_dialog)
         
         #
         self.label_rel = QLabel("Relative path : ")
         self.label_rel_path = QLabel("")
-        self.ctr_layout.addWidget(self.label_rel)
-        self.ctr_layout.addWidget(self.label_rel_path)
+        self.layout_rel.addWidget(self.label_rel) 
+        self.layout_rel.addWidget(self.label_rel_path) 
+        self.ctr_layout.addLayout(self.layout_rel)
+        self.ctr_layout.addLayout(self.layout_root)
+        self.ctr_layout.addLayout(self.layout_target)
