@@ -22,13 +22,15 @@ class MainUi():
         
         self.label_target = QLabel("Target path : ")
         self.label_root = QLabel("Root path : ")
-        self.label_target.setGeometry(QRect(70, 80, 100, 100))
-        self.label_root.setGeometry(QRect(70, 80, 100, 100))
+        self.label_target.setFixedWidth(100)
+        self.label_root.setFixedWidth(100)
         self.label_target_path = QLabel()
         self.label_root_path = QLabel()
 
         self.btn_target_path_dialog = QPushButton("...")
         self.btn_root_path_dialog = QPushButton("...")
+        self.btn_target_path_dialog.setFixedWidth(30)
+        self.btn_root_path_dialog.setFixedWidth(30)
         self.btn_target_path_dialog.clicked.connect(
             lambda: func.get_target_path(self.window, self))
         self.btn_root_path_dialog.clicked.connect(
@@ -43,6 +45,7 @@ class MainUi():
         
         #
         self.label_rel = QLabel("Relative path : ")
+        self.label_rel.setFixedWidth(100)
         self.label_rel_path = QLabel("")
         self.layout_rel.addWidget(self.label_rel) 
         self.layout_rel.addWidget(self.label_rel_path) 
